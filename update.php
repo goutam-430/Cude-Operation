@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
                         <input value="<?php echo $arraydata['password']; ?>" type="password" class="form-control" required name="password" id="exampleInputPassword1">
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Update</button>
                     </div>
                 </div>
             </div>
