@@ -1,0 +1,14 @@
+
+
+Create a data base name
+
+    curdoperation
+
+Create a Table name 
+
+	signing
+		nalues - id 
+			 Name
+			 Phone
+			 Email
+			 password
