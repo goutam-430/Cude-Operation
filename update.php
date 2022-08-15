@@ -3,22 +3,24 @@
 <?php
 
 include 'connection.php';
+// shown before data 
+$ids = $_GET['id'];
+$showquarry = " SELECT * FROM `signing` WHERE id = {$ids}";
+$showdata = mysqli_query($conn,$showquarry);
+$arraydata = mysqli_fetch_array($showdata);
+
+
 
 if (isset($_POST['submit'])) {
-  
-    $id = $_GET['id'];
+    $idupdate = $_GET['id'];
+
     $uname = $_POST['name'];
     $uphone = $_POST['phoe'];
     $uemail = $_POST['email'];
     $upass = $_POST['password'];
-    $q = "UPDATE `signing` SET `id`='$id',`Name`='$uname',`Phone`='$uphone',`Email`='$uemail',`password`='$upass' WHERE id=$id";
+    $q = " UPDATE `signing` SET `id`='$idupdate',`Name`='$uname',`Phone`='$uphone',`Email`='$uemail',`password`='$upass' WHERE id=$idupdate";
 
-    $quary = mysqli_query($conn,$q);
-    if (count($quary) == 1 ) {
-        $n = mysqli_fetch_array($quary);
-        $name = $n['Name'];
-        $address = $n['address'];
-    }
+    $quary = mysqli_query($conn,$q); 
     header('location:display.php');
 }
 
@@ -49,19 +51,19 @@ if (isset($_POST['submit'])) {
                     <div class="mb-2 ">
                     
                         <label for="exampleInputEmail1" class="form-label">Enter Your Name</label>
-                        <input type="text" class="form-control " required name="name" id="exampleInputName" value="<?php $name?>" >
+                        <input value="<?php echo $arraydata['Name']; ?>"  type="text" class="form-control " required name="name" id="exampleInputName" value="<?php $name?>" >
                     </div>
                     <div class="mb-2 ">
                         <label for="exampleInputEmail1" class="form-label">Phone</label>
-                        <input type="tel" class="form-control" required name="phoe" id="exampleInputEmail1">
+                        <input value="<?php echo $arraydata['Phone']; ?>" type="tel" class="form-control" required name="phoe" id="exampleInputEmail1">
                     </div>
                     <div class="mb-2 ">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" required name="email" id="exampleInputEmail1" ">
+                        <input value="<?php echo $arraydata['Email']; ?>" type="email" class="form-control" required name="email" id="exampleInputEmail1" ">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" required name="password" id="exampleInputPassword1">
+                        <input value="<?php echo $arraydata['password']; ?>" type="password" class="form-control" required name="password" id="exampleInputPassword1">
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>

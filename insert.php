@@ -9,9 +9,11 @@
         $uphone = $_POST['phoe'];
         $uemail = $_POST['email'];
         $upass = $_POST['password'];
-        $q = " INSERT INTO `signing` (`id`, `Name`, `Phone`, `Email`, `password`) VALUES (NULL, '$uname', '$uphone', '$uemail', '$upass')";
+
+        $q = " INSERT INTO `signing` (`id`, `Name`, `Phone`, `Email`, `password`) VALUES (NULL, '$uname', '$uphone', '$uemail', '$upass') ";
 
         $quary = mysqli_query($conn,$q);
+
         header('location:insert.php');
     }
 
